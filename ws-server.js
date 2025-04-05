@@ -20,7 +20,7 @@ let messages = []; // In-memory store
 wss.on('connection', (ws) => {
   console.log('User connected');
 
-  // Send all past messages
+  // Will send all past messages
   ws.send(JSON.stringify({ type: 'INIT', messages }));
 
   ws.on('message', (message) => {
