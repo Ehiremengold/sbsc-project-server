@@ -8,11 +8,11 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 const avatars = [
-  "https://avatars.githubusercontent.com/u/16860528",
-  "https://avatars.githubusercontent.com/u/20110627",
-  "https://avatars.githubusercontent.com/u/106103625",
-  "https://avatars.githubusercontent.com/u/59228569",
-  "https://avatars.githubusercontent.com/u/59442788"
+  'https://avatars.githubusercontent.com/u/16860528',
+  'https://avatars.githubusercontent.com/u/20110627',
+  'https://avatars.githubusercontent.com/u/106103625',
+  'https://avatars.githubusercontent.com/u/59228569',
+  'https://avatars.githubusercontent.com/u/59442788',
 ];
 
 let messages = []; // In-memory store
@@ -35,7 +35,9 @@ wss.on('connection', (ws) => {
             id: uuidv4(),
             user: data.user,
             text: data.message,
-            avatar: data.avatar || avatars[Math.floor(Math.random() * avatars.length)],
+            avatar:
+              data.avatar ||
+              avatars[Math.floor(Math.random() * avatars.length)],
             timestamp: Date.now(),
           };
           messages.push(newMessage);
@@ -86,6 +88,6 @@ function broadcast(data) {
   });
 }
 
-server.listen(8000, () => {
-  console.log('WebSocket server running on ws://localhost:8000');
+server.listen(process.env.PORT || 8000, () => {
+  console.log('WebSocket server running...');
 });
