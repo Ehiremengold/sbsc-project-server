@@ -1,0 +1,7 @@
+{
+  "name": "ws-server",
+  "main": "ws-server.js",
+  "scripts": {
+    "start": "node ws-server.js"
+  }
+}
