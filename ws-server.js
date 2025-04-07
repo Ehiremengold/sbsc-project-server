@@ -30,6 +30,12 @@ wss.on('connection', (ws) => {
       console.log('Received:', data);
 
       switch (data.type) {
+        case 'PING':
+          console.log('Received PING from client');
+          // Optionally reply with a PONG
+          ws.send(JSON.stringify({ type: 'PONG' }));
+          break;
+        
         case 'SEND': {
           const newMessage = {
             id: uuidv4(),
